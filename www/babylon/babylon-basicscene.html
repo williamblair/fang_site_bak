@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Babylon 3D Cube </title>
+	
+	<!-- includes js files for babylon.js -->
+	<!--<script src="http://www.babylonjs.com/babylon.js"></script>-->
+	<!-- <script src="./Babylon.js-masterv23/dist/cannon.js"></script> -->
+	<!-- <script src="./Babylon.js-masterv23/dist/Oimo.js"></script> -->
+	<!-- <script src="./Babylon.js-masterv23/dist/hand-1.3.8.js"></script> -->
+	<script src="Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="Babylon.js-2.2.0/dist/cannon.js"></script>
+	<script src="Babylon.js-2.2.0/dist/Oimo.js"></script>
+	
+	<style>
+		html, body {
+			overflow:	hidden;
+			width:		100%;
+			height:		100%;
+			margin:		0;
+			padding:	0;
+		}
+		
+		#renderCanvas {
+			width:		100%;
+			height:		100%;
+			touch-action: none;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<canvas id="renderCanvas">
+	<script>
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine( canvas, true );
+		
+		var createScene = function() {
+			// sets the background color
+			var scene = new BABYLON.Scene( engine );
+			scene.clearColor = new BABYLON.Color3( 0.0, 0.0, 0.0 ); // background black
+			
+			// create a camera - name, alpha, beta. radius, pivot point, scene
+			//var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene );
+			var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
+			
+			// move the camera
+			//camera.setPosition( new BABYLON.Vector3(5, 5, 10 ) );
+
+			// set the camera look at point
+			camera.setTarget(BABYLON.Vector3.Zero());
+			
+			// allows the camera to be moved
+			camera.attachControl(canvas, false);
+			
+            // makes the camera active
+           // scene.activeCamera = camera;
+            //scene.activeCamera.attachControl(canvas);
+            
+            // creates a light
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene );
+           
+			// set light intensity
+			light.intensity = 0.5;
+
+			// create a sphere
+			// parameters: name, subdivision, size, scene
+			var sphere = BABYLON.Mesh.CreateSphere("sphere1", 16, 2, scene);
+
+			// move the sphere up 1
+			sphere.position.y = 1;
+
+			// create the ground
+			// parameters: name, width, depth, subdivisions, scene
+			var ground = BABYLON.Mesh.CreateGround("ground1", 6, 6, 2, scene);
+
+			return scene;
+		};
+		
+		// runs the above function and puts it in scene
+		var scene = createScene();
+		
+		// this loops every frame
+		engine.runRenderLoop( function(){
+		
+			scene.render();
+		})
+		
+		//resizes if necessary
+		window.addEventListener("resize", function(){
+			engine.resize();
+		});
+		
+	</script>
+	</canvas>
+	
+</body>
+</html>

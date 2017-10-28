@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Babylon 3D Cube </title>
+	
+	<!-- includes js files for babylon.js -->
+	<script src="Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="Babylon.js-2.2.0/dist/cannon.js"></script>
+	<script src="Babylon.js-2.2.0/dist/Oimo.js"></script>
+	
+	<style>
+		html, body {
+			overflow:	hidden;
+			width:		100%;
+			height:		100%;
+			margin:		0;
+			padding:	0;
+		}
+		
+		#renderCanvas {
+			width:		100%;
+			height:		100%;
+			touch-action: none;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<canvas id="renderCanvas">
+	<script>
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine( canvas, true );
+		
+		var createScene = function() {
+			// sets the background color
+			var scene = new BABYLON.Scene( engine );
+			//scene.clearColor = new BABYLON.Color3( 0.0, 0.0, 0.0 );
+      //scene.clearColor = new BABYLON.Color3( 1.0, 0.0, 0.0 );
+			scene.clearColor = new BABYLON.Color3.Blue();
+			
+			// create a camera - name, alpha, beta. radius, pivot point, scene
+			var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene );
+			
+			// move the camera
+			camera.setPosition( new BABYLON.Vector3(5, 5, 10 ) );
+			
+			// allows the camera to be moved
+			camera.attachControl(canvas);
+			
+            // makes the camera active
+           // scene.activeCamera = camera;
+            //scene.activeCamera.attachControl(canvas);
+            
+            // creates a light
+            var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 2, 0), scene );
+            
+			// creates a simple box
+			var box = new BABYLON.Mesh.CreateBox("box", 3, scene );
+
+/*			
+			// name, width, height, subdivisions, scene, updateable
+			var floor = new BABYLON.Mesh.CreateGround("floor", 3.0, 3.0,
+							5, scene, false );
+			
+			floor.position.y = 3;
+*/			
+			// creates a material
+			
+			/*
+			// does the stuff in this func before each frame
+			scene.registerBeforeRender( function(){
+				box.rotation.y += 0.005;
+				
+				 // if the box reaches 60 degrees so the angle doesn't get too crazy
+				if( box.rotation.y > 2*Math.PI ){
+					box.rotation.y = 0;
+				}
+			});
+			*/
+			return scene;
+		};
+		
+		// runs the above function and puts it in scene
+		var scene = createScene();
+		
+		// this loops every frame
+		engine.runRenderLoop( function(){
+		
+			scene.render();
+		})
+		
+		//resizes if necessary
+		window.addEventListener("resize", function(){
+			engine.resize();
+		});
+		
+	</script>
+	</canvas>
+	
+</body>
+</html>

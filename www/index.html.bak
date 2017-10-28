@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>William (BJ) Blair</title>
+	<meta charset="UTF-8"/>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/global_flex.css"/>
+	
+	<!-- Bablyon.js -->
+	<script src="babylon/Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="babylon/Babylon.js-2.2.0/dist/cannon.js"></script>
+	
+</head>
+<body>
+
+	<header id="header1">
+		<h1>BJ BLAIR</h1>
+		
+		<div id="canvasDiv">
+		<canvas id="myCanvas">
+			<!-- draws a spinning cube -->
+			<script src="javascript/headerCube.js"></script>
+		</canvas>
+		</div>
+	</header>
+
+	<div id="contentDiv">
+
+		<aside id="navAside">
+			<nav id="nav1">
+					<script src="pagelist.js"></script>
+			</nav>
+		</aside>
+		
+		<section id="section1">
+			<article>
+				<p>Hello There! <br/><br/>
+				   Here's some info about your computer: <br/>
+				</p>
+				<table id="compInfo" border="1">
+					<tr> <td>Code Name       </td> <td id="codeName">       </td> </tr>
+					<tr> <td>App Name        </td> <td id="appName">        </td> </tr>
+					<tr> <td>App Version     </td> <td id="appVers">        </td> </tr>
+					<tr> <td>Language        </td> <td id="language">       </td> </tr>
+					<tr> <td>Platform        </td> <td id="platform">       </td> </tr>
+					<tr> <td>User Agent      </td> <td id="userAgent">      </td> </tr>
+					<tr> <td>Screen Size     </td> <td id="screenSize">     </td> </tr>
+				</table>
+				
+				<!-- writes the html to all of the above td's in the compInfo table -->
+				<script src="javascript/userInfo.js"></script>
+
+			</article>
+		</section>
+
+	</div> <!-- end content div -->
+
+<footer id="footer1">
+	<p>(C) 2016 William (BJ) Blair</p>
+	<p id="timer">
+		<!-- a simple digitial clock -->
+		<script src="javascript/clock.js"></script>
+	</p>
+</footer>
+
+</body>
+</html>
+

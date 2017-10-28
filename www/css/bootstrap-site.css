@@ -1,0 +1,97 @@
+/* css for updated website using bootstrap */
+@font-face {
+			font-family: jack-input;
+			src:         url('../jackinput/jackinput.ttf');
+		}
+		
+		body{
+			background-color: rgb(0,0,0);
+			color:            rgb(255,255,255);
+		}
+		
+		#title{
+			background-color:    rgb(40,40,40);
+			border:              1px solid rgb(255,255,255);
+		}
+		
+		#header1 {
+			color:               rgb(255,255,255);
+			font-family:         jack-input;
+		}
+		
+		#mainBodyRow {
+			margin-top:          10px;
+			margin-bottom:       10px;
+			height:              100%;
+			border-radius:       0px;
+			border:              1px solid rgb(255,255,255);
+		}
+		
+		#linksList {
+			margin-top:5px;
+		}
+		
+		#linksList a {
+			color: rgb(255,255,255);
+		}
+
+		#linksList a:link{
+			color: rgb(255,255,255);
+		}
+		
+		#linksList a:visited {
+			color: rgb(200,200,200);
+		}
+		
+		#linksList a:hover {
+			color: rgb(0,0,0);
+			background-color: rgb(255,255,255);
+			border-radius: 0px;
+		}
+		
+		#mainNavDiv {
+			margin-top: 5px;
+			border:     1px solid rgb(255,255,255);
+		}
+		
+		#myNavbar {
+			background-color: rgb(60,60,60);
+			background-image: url('../images/grey_from_chris.gif');       
+		}
+		
+		.navbar {
+			border: 0px;
+		}
+		
+		.navbar-header{
+			background-color: rgb(60,60,60);
+			background-image: url('../images/grey_from_chris.gif');
+		}
+		
+		#mainBody {
+			background-image: url('../images/grey_from_chris.gif');
+			background-color: rgb(60,60,60);
+			color:            rgb(255,255,255);
+			min-height:       400px;
+		}
+		
+		#content {
+			overflow: auto;
+			max-height: 600px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+		
+		#footerContainer {
+			border: 1px solid rgb(255,255,255);
+			background-color: rgb(40,40,40);
+			color:            rgb(255,255,255);
+		}
+		
+		#nameCopyright{
+			margin: 5px;
+		}
+		
+		#timer {
+			margin: 5px;
+		}

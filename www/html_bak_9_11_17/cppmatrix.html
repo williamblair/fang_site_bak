@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8">
+        <!-- mobile friendly viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BJ Blair</title>
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jquery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!-- bootstrap javascript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- my css -->
+        <link rel="stylesheet" href="css/ghost-style.css">
+        <style>
+            .content-wrapper {
+            background-image:none;
+            padding-top: 0px;
+            }
+            #mainBody {
+            background-color: rgba(0,0,0,0.70);
+            color:            rgb(0,255,0);
+            border:           1px solid rgb(255,255,255);
+            padding-bottom:   5px;
+            }
+            #bgVideo {
+            background-image: none;
+            position:         absolute;
+            margin: 0px;
+            width:            100%;
+            height:           100%;
+            min-height: 1040px;
+            z-index:          -1;
+            background-size:  cover;
+            object-fit:       fill;
+            background-image: 
+            }
+            /* stretch the background image more for mobile */
+            @media screen and (max-width: 480px) {
+            #bgVideo {
+            background-image: none;
+            position:         absolute;
+            margin: 0px;
+            width:            100%;
+            height:           100%;
+            min-height: 1286px;
+            z-index:          -1;
+            background-size:  cover;
+            object-fit:       fill;
+            background-image: 
+            }
+            }
+            #imageDiv {
+            margin-left:  auto;
+            margin-right: auto;
+            width:        300px;
+            }
+            #section1 p {
+            margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- title with name and links -->
+        <div class="container-fluid title">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header" id="homelink">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#links">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand navbar-header" href="#">William (BJ) Blair</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="links">
+                        <ul class="nav navbar-nav navbar-right" id="linksList">
+                            <!-- writes the master list of links to here -->
+                            <script src="pagelist.js"></script>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- main content -->
+        <div class="content-wrapper">
+            <video id="bgVideo" loop autoplay>
+                <source src="videos/coderain.mp4" type="video/mp4">
+            </video>
+            <!-- just a placeholder to add spacing from the top,
+                without messing up bootstrap styling -->
+            <div class="row">
+                <div class="col-sm-12" style="min-height:70px;"></div>
+            </div>
+            <div class="container" id="mainBody">
+                <div id="imageDiv"> 
+                    <img src="images/matrixlogo.png" width="300px"/><br/>
+                </div>
+                <p>
+                    Are you a real elite hax0rz? Do you need the infamous 
+                    scrolling text as part of your hacker toolkit? Do you
+                    want to impress your friends and strike fear into the
+                    hearts of your internet enemies?
+                </p>
+                <p>
+                    Look no further! Inspired by Chris Allegretta's
+                    <a href="http://www.asty.org/cmatrix/">cmatrix</a>,
+                    I present to you cppmatrix! I feel my program 
+                    improves upon cmatrix by alternating characters each
+                    frame, giving you a more dynamic look. Run cmatrix
+                    and cppmatrix side by side to see which one you like 
+                    better :)
+                </p>
+                <p>
+                    Current usage: <br/>
+                    cppmatrix [-s SPEED] [-c COLOR] [-m HEIGHT]<br/><br/>
+                <ul style="list-style:none;">
+                    <li>
+                        SPEED: How many Frames Per Second cppmatrix tries to
+                        run at - defaults to 20
+                    </li>
+                    <br/>
+                    <li>
+                        COLOR: a string of the color to display the text in;
+                        one of these: <br/>
+                        green, blue, red, yellow, magenta/purple, cyan, 
+                        white, and black - <br/>
+                        defaults to green
+                    </li>
+                    <br/>
+                    <li>
+                        HEIGHT: The maximum number of characters of 1 text
+                        column - defaults to 15
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Notes: <br/>
+                    -Requires ncurses to compile and run <br/>
+                    -Slow when using larger console screens; runs best using
+                    the normal 80 character width. This is due to the fact
+                    that it loops through each column on the screen each 
+                    frame :P
+                </p>
+                <p>
+                    Files: <br/>
+                    <a href="files/cppmatrix-0.3.zip">cppmatrix-0.3.zip</a> <br/>
+                    <a href="files/cppmatrix-0.3.tar.gz">cppmatrix-0.3.tar.gz</a>
+                </p>
+                EDIT: As of November, 2016, cppmatrix is on Github! <br/>
+                Check it out: <br/>
+                <a href="https://github.com/williamblair/cppmatrix/">
+                https://github.com/williamblair/cppmatrix/
+                </a>
+                <div id="imageDiv">
+                    <a href="images/cppmatrix-screenshot.png">
+                    <img src="images/cppmatrix-screenshot.png" width="300px"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- footer with copyright and clock -->
+        <footer class="container-fluid footer1">
+            <div class="col-sm-5">
+                <p id="lastModified" style="margin-bottom:0px;">
+			<script>
+				var p = document.getElementById("lastModified");
+				var modString = "Last Modified: ";
+
+				modString += document.lastModified;
+				p.innerHTML = modString;
+			</script>
+		</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="margin-bottom:0px;">&copy; 2017 William (BJ) Blair</p>
+            </div>
+            <div class="col-sm-2">
+                <p id="timer">
+                    <script src="javascript/clock.js"></script>
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

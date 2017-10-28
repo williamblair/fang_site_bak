@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+
+	<meta charset="utf-8" />
+	<!-- responsive web design - mobile first! -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	<link rel="stylesheet" href="css/global_9_11_17.css"/>
+
+</head>
+<body>
+<div class="centerBody">
+	<h1>William D. Blair III</h1>
+
+	<div class="contentWrapper">
+		<div class="navDiv">
+			<h3>Links</h3>
+			<nav class="links">
+				<!--<ul>
+					<li><a href="link1">link1</a></li>
+					<li><a href="link2">link2</a></li>
+					<li><a href="link3">link3</a></li>
+					<li><a href="link4">link4</a></li>
+					<li><a href="link5">link5</a></li>
+				</ul>-->
+				<ul id="linksList">
+	                            <!-- <li><a href="#">link1</a></li>
+                                	<li><a href="#">link2</a></li>
+                        	        <li><a href="#">link3</a></li> -->
+                	            <!-- writes the master list of links to here -->
+        	                    <script src="pagelist.js"></script>
+	                        </ul>
+			</nav>
+		</div>
+		
+		<div class="content">
+			<h2>Hello World!</h2>
+                <h3>About Me:</h3>
+                <p>
+                    Hi! My name is William (BJ) Blair, and I am a Computer and Information
+                    Science student at SUNY Polytechnic Institute. I have alot of interests,
+                    which include (but aren't limited to) the following:
+                <ul>
+                    <li>Computer Graphics</li>
+                    <li>Web Development</li>
+                    <li>Linux/Unix</li>
+                    <li>Video Game Console Programming</li>
+                    <li>Music (I play drums and guitar)</li>
+                    <li>Skateboarding/Snowboarding/Skiing</li>
+                </ul>
+                </p>
+                <p>Here's some info about your computer:</p>
+                <table>
+                    <tr>
+                        <td>Code Name       </td>
+                        <td id="codeName">       </td>
+                    </tr>
+                    <tr>
+                        <td>App Name        </td>
+                        <td id="appName">        </td>
+                    </tr>
+                    <tr>
+                        <td>App Version     </td>
+                        <td id="appVers">        </td>
+                    </tr>
+                    <tr>
+                        <td>Language        </td>
+                        <td id="language">       </td>
+                    </tr>
+                    <tr>
+                        <td>Platform        </td>
+                        <td id="platform">       </td>
+                    </tr>
+                    <tr>
+                        <td>User Agent      </td>
+                        <td id="userAgent">      </td>
+                    </tr>
+                    <tr>
+                        <td>Screen Size     </td>
+                        <td id="screenSize">     </td>
+                    </tr>
+                </table>
+                <!-- writes the html to all of the above td's in the compInfo table -->
+                <script src="javascript/userInfo.js"></script>
+		</div>
+	</div>
+	
+	<footer id="lastModified">
+		<script>
+		var p = document.getElementById("lastModified");
+		var modString = "Last Modified: ";
+
+		modString += document.lastModified;
+		p.innerHTML = modString;
+		</script>
+	</footer>
+</div>
+</body>
+</html>

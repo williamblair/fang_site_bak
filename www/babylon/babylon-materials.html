@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Babylon 3D Test </title>
+	
+	<!-- javascript for babylon -->
+	<script src="Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="Babylon.js-2.2.0/dist/cannon.js"></script>
+	<script src="Babylon.js-2.2.0/dist/Oimo.js"></script>
+	
+	<style>
+		html, body {
+			overflow:	hidden;
+			width:		100%;
+			height:		100%;
+			margin:		0;
+			padding:	0;
+		}
+		
+		#renderCanvas {
+			width:		100%;
+			height:		100%;
+			touch-action: none;
+		}
+	</style>
+	
+</head>
+
+<body>
+	<canvas id="renderCanvas"></canvas>
+	<script>
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine( canvas, true );
+		
+		var createScene = function() {
+			// sets the background color
+			var scene = new BABYLON.Scene( engine );
+			scene.clearColor = new BABYLON.Color3( 0.2, 0, 0.2 );
+			
+			// create a camera - name, alpha, beta. radius, pivot point, scene
+			var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0, 0, BABYLON.Vector3.Zero(), scene );
+			
+			// move the camera
+			camera.setPosition( new BABYLON.Vector3(0, 3, -10 ) );
+			
+			// create a 'sun' light - name, location, scene
+			var sun = new BABYLON.HemisphericLight("sun", new BABYLON.Vector3(0, 1, 0), scene );
+			
+			// allows the camera to be moved
+			camera.attachControl(canvas);
+			
+            // makes the camera active
+           // scene.activeCamera = camera;
+            //scene.activeCamera.attachControl(canvas);
+            
+			// creates a simple box
+			var box = new BABYLON.Mesh.CreateBox("box", 1, scene );
+			box.position.x = -0.25;
+			// creates a material
+			var boxMat = new BABYLON.StandardMaterial("mat", scene);
+			
+			// makes it transparent
+			//boxMat.alpha = 0.5;
+			boxMat.diffuseTexture = new BABYLON.Texture("rocks.jpg", scene );
+			boxMat.specularColor = new BABYLON.Color3( 0.1, 0.1, 0.1 );
+			//boxMat.wireframe = true;
+			
+			// assigns the material to the cube
+			box.material = boxMat;
+			
+			// name, height, diamTop, diam_bottom, tesselation, [opt. height subdivs], scene, updateable
+			var can = new BABYLON.Mesh.CreateCylinder("cylinder", 1, 1, 1, 20, scene, false );
+			can.position.x = -1.5;
+			
+			canMat = new BABYLON.StandardMaterial("can", scene );
+			canMat.diffuseTexture = new BABYLON.Texture("rustysteel.jpg", scene );
+			canMat.diffuseTexture.uScale = 0.5;
+			
+			can.material = canMat;
+			/*
+			// does the stuff in this func before each frame
+			scene.registerBeforeRender( function(){
+				box.rotation.y += 0.005;
+				
+				 // if the box reaches 60 degrees so the angle doesn't get too crazy
+				if( box.rotation.y > 2*Math.PI ){
+					box.rotation.y = 0;
+				}
+			});
+			*/
+			return scene;
+		};
+		
+		// runs the above function and puts it in scene
+		var scene = createScene();
+		
+		// this loops every frame
+		engine.runRenderLoop( function(){
+		
+			scene.render();
+		})
+		
+		//resizes if necessary
+		window.addEventListener("resize", function(){
+			engine.resize();
+		});
+		
+	</script>
+	
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canvas Test</title>
+    
+<style>
+    
+    #myCanvas {
+        width:          640px;
+        height:         480px;
+    }
+    
+</style>
+    
+</head>
+
+<body>
+            <canvas id="myCanvas" width="640px" height="480px">
+            </canvas>
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext('2d');
+
+var x = 0;
+var y = 0;
+
+var drawRect = function () {
+	
+	// clear the screen
+//	ctx.fillStyle = "#FFFFFF";
+//	ctx.fillRect(0, 0, 640, 480);
+
+	ctx.fillStyle = "#0000FF";
+	ctx.fillRect( x, y, 50, 50 );
+
+	if( x < 640 - 50 ){
+		x+=55;
+	} 
+
+    else {
+        // clear the screen
+        ctx.fillStyle = "#FFFFFF";
+        ctx.fillRect(0, 0, 640, 480);
+        
+        x = 0; // resets the animation
+    }
+/*    
+    else {
+		console.log("Finished");
+		clearInterval(my_interval);
+	}
+*/
+    
+}
+
+// runs draw rect every 200 milliseconds
+var my_interval = setInterval( drawRect, 200 );
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta name="description" content="Home page for William (BJ) Blair III"/>
+        <meta charset="utf-8">
+        <!-- mobile friendly viewport -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BJ Blair</title>
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <!-- jquery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!-- bootstrap javascript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!-- my css -->
+        <link rel="stylesheet" href="css/ghost-style.css">
+    </head>
+    <body>
+        <!-- title with name and links -->
+        <div class="container-fluid title">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header" id="homelink">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#links">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand navbar-header" href="#">William (BJ) Blair</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="links">
+                        <ul class="nav navbar-nav navbar-right" id="linksList">
+                            <!-- <li><a href="#">link1</a></li>
+                                <li><a href="#">link2</a></li>
+                                <li><a href="#">link3</a></li> -->
+                            <!-- writes the master list of links to here -->
+                            <script src="pagelist.js"></script>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- main content -->
+        <div class="content-wrapper">
+            <div class="container content">
+                <h2>Hello World!</h2>
+                <h3>About Me:</h3>
+                <p>
+                    Hi! My name is William (BJ) Blair, and I am a Computer and Information
+                    Science student at SUNY Polytechnic Institute. I have alot of interests,
+                    which include (but aren't limited to) the following:
+                <ul>
+                    <li>Computer Graphics</li>
+                    <li>Web Development</li>
+                    <li>Linux/Unix Based Operating Systems</li>
+                    <li>Video Game Console Programming</li>
+                    <li>Music (I play drums and guitar)</li>
+                    <li>Skateboarding/Snowboarding/Skiing</li>
+                </ul>
+                </p>
+                <p style="padding:10px;">Because you so politely asked (<i>sarcasm</i>), here's some info about your computer:</p>
+                <table class="table" id="compInfo" border="1">
+                    <tr>
+                        <td>Code Name       </td>
+                        <td id="codeName">       </td>
+                    </tr>
+                    <tr>
+                        <td>App Name        </td>
+                        <td id="appName">        </td>
+                    </tr>
+                    <tr>
+                        <td>App Version     </td>
+                        <td id="appVers">        </td>
+                    </tr>
+                    <tr>
+                        <td>Language        </td>
+                        <td id="language">       </td>
+                    </tr>
+                    <tr>
+                        <td>Platform        </td>
+                        <td id="platform">       </td>
+                    </tr>
+                    <tr>
+                        <td>User Agent      </td>
+                        <td id="userAgent">      </td>
+                    </tr>
+                    <tr>
+                        <td>Screen Size     </td>
+                        <td id="screenSize">     </td>
+                    </tr>
+                </table>
+                <!-- writes the html to all of the above td's in the compInfo table -->
+                <script src="javascript/userInfo.js"></script>
+            </div>
+        </div>
+        <!-- footer with copyright and clock -->
+        <footer class="container-fluid footer1">
+            <div class="col-sm-5">
+                <p id="lastModified" style="margin-bottom:0px;">
+			<script>
+				var p = document.getElementById("lastModified");
+				var modString = "Last Modified: ";
+
+				modString += document.lastModified;
+				p.innerHTML = modString;
+			</script>
+		</p>
+            </div>
+            <div class="col-sm-5">
+                <p style="margin-bottom:0px;">&copy; 2017 William (BJ) Blair</p>
+            </div>
+            <div class="col-sm-2">
+                <p id="timer">
+                    <script src="javascript/clock.js"></script>
+                </p>
+            </div>
+        </footer>
+    </body>
+</html>

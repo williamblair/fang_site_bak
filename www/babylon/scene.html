@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title> Babylon  </title>
+
+	<script src="./Babylon.js-masterv23/dist/babylon.2.3.js"></script>
+	<script src="./Babylon.js-masterv23/dist/cannon.js"></script>
+	<script src="./Babylon.js-masterv23/dist/Oimo.js"></script>
+	<script src="./Babylon.js-masterv23/dist/hand-1.3.8.js"></script>
+
+	<style>
+		html, body {
+			overflow:	hidden;
+			width:		100%;
+			height:		100%;
+			margin:		0;
+			padding:	0;
+		}
+
+		#renderCanvas {
+			width:		100%;
+			height:		100%;
+			touch-action: none;
+		}
+	</style>
+
+</head>
+
+<body>
+	<canvas id="renderCanvas"></canvas>
+	<script>
+		var canvas = document.getElementById("renderCanvas");
+		var engine = new BABYLON.Engine( canvas, true );
+
+		var createScene = function() {
+			var scene = new BABYLON.Scene(engine);
+											//scene );
+
+			var sun = new BABYLON.HemisphericLight("sun",
+										new BABYLON.Vector3(0, 5, 0),
+										scene );
+
+			var camera = new BABYLON.FreeCamera("camera",
+											new BABYLON.Vector3(0, 1, 0),
+												scene );
+
+			// test new universal camera with babylon 2.3
+			// EDIT - doesn't seem to be working...
+			//var camera = new BABYLON.Camera("camera1",
+			//								new BABYLON.Vector3(0, 1, 0), scene );
+
+			camera.attachControl(canvas, true);
+
+			var ground = BABYLON.Mesh.CreatePlane("ground", 40, scene );
+			ground.position = new BABYLON.Vector3(0, -2, 0 );
+			ground.rotation = new BABYLON.Vector3(Math.PI / 2, 0, 0);
+
+			var groundMat = new BABYLON.StandardMaterial("stone", scene);
+			groundMat.diffuseTexture = new BABYLON.Texture("images/stone.jpg", scene);
+			ground.material = groundMat;
+
+			var box = BABYLON.Mesh.CreateBox("crate1", 2, scene );
+			box.position = new BABYLON.Vector3(4, -1, 4);
+
+			var crateMat = new BABYLON.StandardMaterial("crateMat", scene);
+			crateMat.diffuseTexture = new BABYLON.Texture("images/crate.jpg", scene);
+			box.material = crateMat;
+// ------- CREATE WALLS -----------------------------------------
+			var wall1 = BABYLON.Mesh.CreatePlane("wall1", 20, scene,
+									false, BABYLON.Mesh.DOUBLESIDE);
+			wall1.position = new BABYLON.Vector3(0,8,-20);
+			wall1.scaling.x = 2;
+
+			var wall2 = BABYLON.Mesh.CreatePlane("wall2", 20, scene,
+									false, BABYLON.Mesh.DOUBLESIDE);
+			wall2.position = new BABYLON.Vector3(0,8, 20);
+			wall2.scaling.x = 2;
+
+			var wall3 = BABYLON.Mesh.CreatePlane("wall3", 20, scene,
+									false, BABYLON.Mesh.DOUBLESIDE);
+			wall3.position = new BABYLON.Vector3(20,8, 0);
+			wall3.rotation = new BABYLON.Vector3(0, Math.PI / 2, 0);
+			wall3.scaling.x = 2;
+
+			walMat = new BABYLON.StandardMaterial("walMat", scene);
+			walMat.diffuseTexture = new BABYLON.Texture("images/cabin.jpg", scene);
+
+			wall1.material = walMat;
+			wall2.material = walMat;
+			wall3.material = walMat;
+
+			wall1.checkCollisions = true;
+			wall2.checkCollisions = true;
+			wall3.checkCollisions = true;
+
+// --------------------------------------------------------------
+			scene.gravity = new BABYLON.Vector3(0, -0.9, 0);
+			scene.collisionsEnabled = true;
+
+			camera.checkCollisions = true;
+			camera.applyGravity = true;
+			camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
+
+			ground.checkCollisions = true;
+			box.checkCollisions = true;
+
+			return scene;
+		};
+
+		// runs the above function and puts it in scene
+		var scene = createScene();
+
+		// this loops every frame
+		engine.runRenderLoop( function(){
+
+			scene.render();
+		})
+
+		//resizes if necessary
+		window.addEventListener("resize", function(){
+			engine.resize();
+		});
+
+	</script>
+
+</body>
+</html>

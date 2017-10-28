@@ -1,0 +1,151 @@
+/* override default values for elements */
+* {
+	margin:  0px;
+	padding: 0px;
+}
+
+/* fonts */
+@font-face {
+	font-family: openSans;
+	src:         url('../fonts/open_sans/OpenSans-Regular.ttf');
+}
+
+@font-face {
+	font-family: digitek;
+	src:         url('../fonts/digitek/Digitek.ttf');
+}
+
+html {
+	/* think I like it better white for now... */
+	/*background-image:  url("../images/tweed.jpg");*/
+	/*background-color:  #777777;*/
+	color:               #00FF00;
+	font-family:         openSans;
+}
+
+/* override inline displays */
+header, section, footer, aside, nav, article, hgroup {
+	display: block;
+}
+
+h1 {
+	padding:     10px;
+	font-family: digitek;
+}
+
+/* contains title and cube */
+#header1 {
+	/* positioning */
+	margin-left:      auto;
+	margin-right:     auto;
+	margin-top:       20px;
+	margin-bottom:    0px;
+	max-width:        800px;
+	max-height:       800px;
+	background-color: #111111;
+	display:          -webkit-flex;
+	display:          flex;
+	box-shadow:       0 4px 8px 0 rgba(0, 255, 0, 0.2), 0 6px 20px 0 rgba(0, 255, 0, 0.19);
+}
+
+/* canvas element to draw the cube */
+#myCanvas {
+	width:  100%;
+	height: 100%;
+	touch-action: none;
+}
+
+/* container to hold the canvas and position it */
+#canvasDiv {
+	margin-left:      10px;
+	margin-right:     0px;
+	margin-top:       10px;
+	margin-bottom:    10px;
+	overflow:         hidden;
+	width:            50px;
+	height:           50px;
+}
+
+/* contains the nav and section */
+#contentDiv {
+	display:          -webkit-flex;
+	display:          flex;
+	margin-left:      auto;
+	margin-right:     auto;
+	min-height:       300px;
+	max-width:        800px;
+	height:           100%;
+}
+
+#navAside {
+	/* positioning */
+	display: -webkit-flex;
+	display: flex;
+	width:   250px;
+	padding: 10px;
+	margin-left:   0px;
+	margin-right:  5px;
+	margin-top:    10px;
+	margin-bottom: 10px;
+	
+	/* looks */
+	background-color: #111111; /* light pink */
+	box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.2), 0 6px 20px 0 rgba(0, 255, 0, 0.19);
+}
+
+/* the link list inside the left nav */
+#navAside li {
+	list-style: none;
+}
+
+#section1 {
+	/* flexible test */
+	display:       -webkit-flex;
+	display:       flex;
+	margin-left:   5px;
+	margin-right:  0px;
+	margin-top:    10px;
+	margin-bottom: 10px;
+	padding:       10px;
+	
+	width:               100%;
+	/*-webkit-align-items: stretch;*/
+	/*align-items:         stretch;*/
+	
+	/* looks */
+	background-color: #111111;
+	box-shadow:       0 4px 8px 0 rgba(0, 255, 0, 0.2), 0 6px 20px 0 rgba(0, 255, 0, 0.19);
+}
+
+#compInfo td{
+	padding: 5px;
+}
+
+#footer1 {
+	/* positioning */
+	margin-top:       0px;
+	margin-left:      auto;
+	margin-right:     auto;
+  margin-bottom:    20px;
+	padding-top:      10px;
+	padding-bottom:   10px;
+	padding-left:     0px;
+	padding-right:    0px;
+	max-width:        800px;
+	text-align:       center;
+	
+	display:                -webkit-flex;
+	display:                 flex;
+	-webkit-justify-content: space-between;
+	justify-content:         space-between;
+	
+	/* looks */
+	background-color: #111111;
+	box-shadow: 0 4px 8px 0 rgba(0, 255, 0, 0.2), 0 6px 20px 0 rgba(0, 255, 0, 0.19);
+}
+
+#footer1 p{
+	margin-left:  10px;
+	margin-right: 10px;
+}
+

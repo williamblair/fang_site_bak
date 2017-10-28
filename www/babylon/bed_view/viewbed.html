@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Babylon loader test</title>
+	
+	<!-- javascript for babylon -->
+	<script src="../Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="../Babylon.js-2.2.0/dist/cannon.js"></script>
+	<script src="../Babylon.js-2.2.0/dist/Oimo.js"></script>
+	
+	<style>
+		html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+        }
+	</style>
+</head>
+<body>
+<canvas id="renderCanvas">
+<script>
+        var canvas = document.getElementById("renderCanvas");
+        var engine = new BABYLON.Engine(canvas, true);
+		
+
+        //BABYLON.SceneLoader.Load("", "downloaded_bed.babylon", engine, function (newScene) {
+            // Wait for textures and shaders to be ready
+            //newScene.executeWhenReady(function () {
+	var createScene = function(){	
+		var newScene = new BABYLON.Scene( engine );
+				// set background color
+				newScene.clearColor = new BABYLON.Color3(0.0, 0.3, 0.3);
+			
+				// create a light
+				var sun = new BABYLON.HemisphericLight("sun", new BABYLON.Vector3(0, 10, 0), newScene );
+				
+				// apply gravity
+				newScene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+				
+				// create the ground
+				var ground = new BABYLON.Mesh.CreateGround("ground", 30, 30, 2, newScene);
+				ground.position.y = -0.7;
+			
+                // Attach camera to canvas inputs
+                //newScene.activeCamera.attachControl(canvas);
+				var camera = new BABYLON.FreeCamera("Camera", new BABYLON.Vector3(0, 3, -10), newScene );
+				newScene.activeCamera = camera;
+				newScene.activeCamera.attachControl(canvas);
+				
+				// add wasd input
+				camera.keysUp.push(87); // w
+				camera.keysDown.push(83); // s
+				camera.keysLeft.push(65); // a
+				camera.keysRight.push(68); // d
+				
+				// apply gravity to the camera
+				camera.applyGravity = true;
+				
+		var bed;
+		// The first parameter can be used to specify which mesh to import. Here we import all meshes
+		BABYLON.SceneLoader.ImportMesh("bed", "", "downloaded_bed.babylon", newScene, function (newMeshes) {   
+			bed = newMeshes;
+		});
+
+		bed[0].position.x = 0;
+		bed[0].position.y = 0;
+				// give our camera a 'body' to be attached to
+				camera.ellipsoid = new BABYLON.Vector3(1, 1, 1);
+				
+				// enable collisions
+				newScene.collisionsenabled = true;
+				camera.checkCollisions = true;
+				ground.checkCollisions = true;
+				
+				// make it so you don't have to click to move the camera
+				//engine.isPointerLock = true;
+	return newScene;
+    };
+
+	var scene = createScene();
+
+	engine.runRenderLoop( function(){
+		scene.render();
+	});
+
+	window.addEventListener("resize", function(){
+		engine.resize();
+	});
+	
+
+
+</script>
+</canvas>
+
+</body>
+</html>

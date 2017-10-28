@@ -1,0 +1,135 @@
+html {
+	background-image: url('../images/ghost-in-the-shell-hands1.png');
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.centerBody {
+	
+	/* DEBUG */
+	/*background-color: #ffff99;*/
+	background-color: rgba(0,0,0,0.80);
+	color: #F0F0F0;
+	
+	/* positioning */
+	margin-left: auto;
+	margin-right: auto;
+	
+	/* for footer, to make it sit at the bottom */
+	position: relative;
+	
+	/*    width    */
+	min-width: 600px;
+	max-width: 1024px;
+	width:     75%;
+	
+	/* height */
+	min-height: 400px;
+}
+
+.centerBody h1 {
+	/* DEBUG */
+	/*background-color: #999999;*/
+	
+	/* positioning */	
+	/*text-align: center;*/
+	margin-bottom:0px;
+}
+
+.centerBody .contentWrapper {
+	/* DEBUG */
+	/*background-color: #ff9999;*/
+	min-width: 600px;
+	max-width: 1024px;
+	width:     100%;
+	/*min-height: 200px;*/
+	
+	/* position child elements */
+	display: -webkit-flex;
+	display: flex;
+	
+	/* leave room for footer on bottom */
+	padding-bottom: 25px;
+	
+}
+
+.centerBody .navDiv {
+	/* DEBUG */
+	/*background-color: #ff99ff;*/
+	
+	/* size */
+	width: 25%;
+}
+
+.centerBody li {
+	/* style */
+	list-style-type: none;
+}
+
+.centerBody .content {
+	/* DEBUG */
+	/*background-color: #99ffff;*/
+	
+	width: 75%;
+}
+
+.centerBody .content p,h1,h2,h3 {
+	padding: 5px;
+}
+
+.centerBody .content table, tr, th, td {
+	border-style: ridge;
+	border-width: 2px;
+}
+
+.centerBody table {
+	margin: 5px;
+}
+
+.centerBody footer {
+	/* DEBUG */
+	/*background-color: #9999ff;*/
+	
+	position: absolute;
+	bottom: 0;
+	left:   0;
+}
+
+/* mobile styling */
+@media only screen and (max-width: 500px)
+{
+	/* set the background differently */
+	html {
+		background-attachment: scroll;
+		background-size: auto;
+	}
+
+	/* have it take up the full screen */
+	.centerbody {
+		margin-left: auto;
+		margin-right: auto;
+		min-width: none;
+		max-width: none;
+		width: 80%;
+		/*height: 100vh;*/
+	}
+
+	/* have the elements sit on top of each other */
+	.centerBody .contentWrapper {
+		display: block;
+		min-width: none;
+		max-width: none;
+		width: 80%;
+		/*height: 100vh;*/
+	}
+
+	/* have navigation list take up the full width */
+	.centerBody .navDiv {
+		width: 80%;
+	}
+
+	.centerBody .content {
+		width: 80%;
+	}
+}
+

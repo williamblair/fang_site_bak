@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>
+    HTML5 animation
+  </title>
+  
+  <style>
+	  #myCanvas {
+		  width:  640px;
+		  height: 480px;
+	  }
+  </style>
+  
+</head>
+<body>
+
+<canvas id="myCanvas" width="640px" height="480px">
+Your browser doesn't support canvas
+</canvas>
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx    = canvas.getContext('2d');
+
+var x = 250;
+var y = 0.0;
+
+var angle = 0.0;
+
+var draw = function () {
+	
+	// clear the screen
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillRect(0, 0, 500, 500);
+	
+	y = y + Math.sin(angle) * 6;
+	angle += 0.05;
+	
+	ctx.fillStyle = "#0000FF";
+	ctx.fillRect( x, y, 50, 50 );
+	
+	if(angle > 360.0){
+		angle = 0.0;
+	}
+}
+
+// runs draw 30 frames per sec
+var my_interval = setInterval( draw, 1000 / 60.0 );
+
+</script>
+
+</body>
+</html>

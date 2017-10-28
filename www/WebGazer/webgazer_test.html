@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset='utf-8'/>
+		<title>WebGazer.js Test</title>
+		
+		<!--<script type="text/javascript" src="webgazer.js"/>-->
+		
+		<style>
+			#mycanvas {
+				position: absolute;
+				left: 0;
+				top:  0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+		</style>
+		
+	</head>
+<body>
+
+	<canvas id="mycanvas" width="100%" height="100%">
+	</canvas>
+	
+	<script src="webgazer.js"></script>
+	<script>
+		
+		var video;
+		var canvas;
+		var ctx;
+		
+		window.onload = function() 
+		{
+			/* set webgazer settings and regression functions */
+			webgazer.setRegression('ridge')
+				.setTracker('clmtrackr')
+				.setGazeListener(function(data, clock){
+					console.log(data); // contains x/y prediction
+					console.log(clock); // ellapsed time in milliseconds since webgazer.begin() was called
+				})
+				.begin()
+				.showPredictionPoints(true); // square every 100 milliseconds where current prediction is
+			
+			var setup = function() 
+			{
+		
+				
+				/* set where to draw the webcam video */
+				video = document.getElementById('webgazerVideoFeed');
+				video.width=0; // hide to draw to canvas instead
+				video.height=0;
+				
+				/* get drawing elements */
+				canvas = document.getElementById('mycanvas');
+				ctx = canvas.getContext('2d');
+				
+				/* set the size of the webcam video */
+				webgazer.params.imgWidth = canvas.width;
+				webgazer.params.imgHeight = canvas.height;
+				
+				/* on play draw to the canvas */
+				video.addEventListener('play', function(){
+					draw(this, ctx, canvas.width, canvas.height);
+				}, false);
+				
+				/* video, context, width, height */
+				function draw(v,c,w,h){
+					if(v.paused || v.ended) return false;
+					c.drawImage(v,0,0,w,h);
+					setTimeout(draw, 20, v, c, w, h);
+				}
+				
+				/* create the overlay (to show face outline) */
+				var overlayCanvas = document.createElement('canvas');
+				overlayCanvas.id = 'overlayCanvas';
+				overlayCanvas.style.position = 'absolute';
+				overlayCanvas.width = canvas.width;
+				overlayCanvas.height = canvas.height;
+				overlayCanvas.style.top = '0px';
+				overlayCanvas.style.left = '0px';
+				
+				/* make the overlay a child of the drawing canvas */
+				canvas.appendChild(overlayCanvas);
+				
+				/* the overlay image object */
+				var cl = webgazer.getTracker().clm;
+				
+				/* draws the overlay */
+				function drawLoop(){
+					requestAnimFrame(drawLoop);
+					overlayCanvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);
+					if(cl.getCurrentPosition())
+						cl.draw(overlayCanvas);
+				}
+				drawLoop();
+			}
+			
+			/* wait until webgazer is ready then begin */
+			function checkIfReady(){
+				if(webgazer.isReady()) {
+					setup();
+				}
+				else{
+					setTimeout(checkIfReady, 100);
+				}
+			}
+			setTimeout(checkIfReady, 100);
+		};
+		
+		
+		
+		/* DEBUG test to make sure canvas is drawing right */
+		/*
+		var canvas = document.getElementById('mycanvas');
+		var ctx = canvas.getContext('2d');
+		
+		ctx.fillStyle = "#0000FF";
+		ctx.fillRect(0,0,canvas.width, canvas.height);*/
+	
+	window.onbeforeunload = function() {
+		//webgazer.end(); //Uncomment if you want to save the data even if you reload the page.
+		window.localStorage.clear(); //Comment out if you want to save data across different sessions 
+	}	
+	</script>
+	
+</body>
+</html>

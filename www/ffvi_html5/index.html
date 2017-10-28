@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> FFVI HTML5 </title>
+    </head>
+    
+    <style>
+        body{
+            background-color: #000000;
+            color:            #FFFFFF;
+        }
+        
+        #canvasDiv{
+            margin-left:  auto;
+            margin-right: auto;
+            width:        640px;
+            height:       480px;
+        }
+    
+    </style>
+    
+<body>
+    <div id="canvasDiv" width="640px" height="480px">
+        
+        <!-- logo used by into.js - not seen for now -->
+        <img id="logo" src="images/logo_words.gif" width="0px" height="0px"/>
+        
+        <!-- image of terra on a magitek armor behind the logo -->
+        <img id="terraMagLogo" src="images/terraMagitekLogo.png" width="0px" height="0px"/>
+        
+        <!-- clouds background for intro -->
+        <img id="stormyclouds" src="images/clouds.jpg" width="0px" height="0px"/>
+        
+        <!-- intro music -->
+        <audio id="titlemusic">
+            <source src="music/titlescreen.mp3" type="audio/mpeg"/>
+        </audio>
+        
+        <canvas id="myCanvas">
+            Sorry, your browser doesn't support the canvas element,
+            please upgrade your browser
+        </canvas>
+        
+    </div>
+    
+    <script type="text/javascript" src="titlescreen.js"></script>
+    
+</body>
+</html>

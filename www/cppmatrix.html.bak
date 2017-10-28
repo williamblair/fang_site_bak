@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>cppmatrix</title>
+	<meta charset="UTF-8"/>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="css/matrix.css"/>
+	
+	<!-- Bablyon.js -->
+	<script src="babylon/Babylon.js-2.2.0/dist/babylon.2.2.js"></script>
+	<script src="babylon/Babylon.js-2.2.0/dist/cannon.js"></script>
+		
+	<style>
+		html {
+			background-color: black;
+		}
+		#bgVideo {
+			position:         absolute;
+			margin:           0px;
+			width:            100%;
+			height:           100%;
+			z-index:          -1;
+			background-size:  cover;
+			object-fit:       fill;
+			background-image: 
+		}
+		#imageDiv {
+			margin-left:  auto;
+			margin-right: auto;
+			width:        300px;
+		}
+		#section1 p {
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+<!-- hopefully auto plays video background -->
+<video id="bgVideo" autoplay loop>
+	<source src="videos/coderain.mp4" type="video/mp4"/>
+</video>
+
+	<header id="header1">
+		<h1>BJ Blair</h1>
+		
+		<div id="canvasDiv">
+		<canvas id="myCanvas">
+			<!-- draws a spinning cube -->
+			<script src="javascript/headerCube_matrix.js"></script>
+		</canvas>
+		</div>
+	</header>
+
+	<div id="contentDiv">
+
+		<aside id="navAside">
+			<nav id="nav1">
+					<script src="pagelist.js"></script>
+			</nav>
+		</aside>
+		
+		<section id="section1">
+			<article>
+				<div id="imageDiv">
+					<img src="images/matrixlogo.png" width="300px"/><br/>
+				</div>
+               <p>
+                   Are you a real elite hax0rz? Do you need the infamous 
+                   scrolling text as part of your hacker toolkit? Do you
+                   want to impress your friends and strike fear into the
+                   hearts of your internet enemies?
+               </p>
+               <p>
+                   Look no further! Inspired by Chris Allegretta's
+                  <a href="http://www.asty.org/cmatrix/">cmatrix</a>,
+                   I present to you cppmatrix! I feel my program 
+                   improves upon cmatrix by alternating characters each
+                   frame, giving you a more dynamic look. Run cmatrix
+                   and cppmatrix side by side to see which one you like 
+                   better :)
+               </p>
+               <p>
+                   Current usage: <br/>
+                   cppmatrix [-s SPEED] [-c COLOR] [-m HEIGHT]<br/><br/>
+                   <ul style="list-style:none;">
+                     <li>
+                     SPEED: How many Frames Per Second cppmatrix tries to
+                     run at - defaults to 20
+                     </li> <br/>
+                     <li>
+                     COLOR: a string of the color to display the text in;
+                     one of these: <br/>
+                     green, blue, red, yellow, magenta/purple, cyan, 
+                     white, and black - <br/>
+                     defaults to green
+                     </li> <br/>
+                     <li>
+                     HEIGHT: The maximum number of characters of 1 text
+                     column - defaults to 15
+                     </li>
+                   </ul>
+               </p>
+              <p>
+              Notes: <br/>
+              -Requires ncurses to compile and run <br/>
+              -Slow when using larger console screens; runs best using
+               the normal 80 character width. This is due to the fact
+               that it loops through each column on the screen each 
+               frame :P
+              </p>
+              <p>
+               Files: <br/>
+               <a href="files/cppmatrix-0.3.zip">cppmatrix-0.3.zip</a> <br/>
+               <a href="files/cppmatrix-0.3.tar.gz">cppmatrix-0.3.tar.gz</a>
+			   </p>
+               EDIT: As of November, 2016, cppmatrix is on Github! <br/>
+               Check it out: <br/>
+               <a href="https://github.com/williamblair/cppmatrix/">
+                 https://github.com/williamblair/cppmatrix/
+               </a>
+         <div id="imageDiv">
+               <a href="images/cppmatrix-screenshot.png">
+               <img src="images/cppmatrix-screenshot.png" width="300px"/>
+               </a>
+         </div>
+			</article>
+		</section>
+
+	</div> <!-- end content div -->
+
+<footer id="footer1">
+	<p>(C) 2016 BJ Blair</p>
+	<p id="timer">
+		<!-- a simple digitial clock -->
+		<script src="javascript/clock.js"></script>
+	</p>
+</footer>
+
+</body>
+</html>
+

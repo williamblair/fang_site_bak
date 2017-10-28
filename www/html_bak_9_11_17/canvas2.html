@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Canvas Test</title>
+</head>
+
+<body>
+
+<canvas id="myCanvas" width="300" height="300">
+</canvas>
+
+<script>
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext('2d');
+
+var x = 0;
+var y = 0;
+
+var drawRect = function () {
+	
+	// clear the screen
+	ctx.fillStyle = "#FFFFFF";
+	ctx.fillRect(0, 0, 300, 300);
+
+	ctx.fillStyle = "#0000FF";
+	ctx.fillRect( x, y, 50, 50 );
+
+	if( x < 300 - 50 ){
+		x+=55;
+	} else {
+		console.log("Finished");
+		clearInterval(my_interval);
+	}
+}
+
+var my_interval = setInterval( drawRect, 1000 );
+
+
+/*
+ctx.moveTo( 200, 200 );
+ctx.lineTo(300, 300);
+ctx.stroke();
+*/
+
+// draws a circle
+// arc(x,y,r,startangle,stopangle)
+/*ctx.beginPath();
+ctx.arc( 200, 60, 50, 0, 2*Math.PI );
+ctx.stroke();
+*/
+</script>
+
+</body>
+
+</html>
